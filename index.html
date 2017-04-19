@@ -326,42 +326,18 @@
 
       
         
-          
-            <h1 id="wxPython安装步骤"><a href="#wxPython安装步骤" class="headerlink" title="wxPython安装步骤"></a>wxPython安装步骤</h1><ol>
+          <h1 id="wxPython安装步骤"><a href="#wxPython安装步骤" class="headerlink" title="wxPython安装步骤"></a>wxPython安装步骤</h1><ol>
 <li><p>安装homebrew</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div></pre></td></tr></table></figure>
 </li>
-<li><p>利用homebrew安装wxpython</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install wxpython</div></pre></td></tr></table></figure>
-</li>
 </ol>
-<p>输入命令：brew info wxpython 查看安装信息。这时wxpython就安装上了。</p>
-<ol>
-<li><p>接下来就是要将wx库和python连接到一起。<br>首先（Python console输入）</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import site; site.getsitepackages()</div></pre></td></tr></table></figure>
-<p> 得到</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&apos;/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages&apos;, &apos;/System/Library/Frameworks/Python.framework/Versions/2.7/lib/site-python&apos;, &apos;/Library/Python/2.7/site-packages&apos;]</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>其中：/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python为系统的python安装路径，/Library/Python/2.7/site-packages就是python的 site-packages 目录。</p>
-<pre><code>然后找到wxpython的wx模块，它在下面的目录中wx文件夹：
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/Cellar/wxpython/3.0.2.0/lib/python2.7/site-packages/wx-3.0-osx_cocoa</div></pre></td></tr></table></figure>
-
-
-接下来就是，给wx文件夹制作一个软链接，并将这个软链接放到python的 site-packages 目录下。具体步骤：
-1.进入python的 site-packages 目录：
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /Library/Python/2.7/site-packages/</div></pre></td></tr></table></figure>
-
-2.输入命令：
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ln -s /usr/local/Cellar/wxpython/3.0.2.0/lib/python2.7/site-packages/wx-3.0-osx_cocoa/wx wx</div></pre></td></tr></table></figure>
-
-其中ln -s是制作软链接的命令，后面为wx模块路径，最后的wx为软链接的名字。
-</code></pre><p>暴力方法(目前还未使用到)：<br>如果上面的方法不行的话，直接到wx模块所在的路径下，为wx文件夹制作替身，然后将替身拷贝到python的site-packages目录下就OK了。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/19/wxPython安装/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
