@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="MySQL," />
 
 
 
@@ -90,16 +90,17 @@
 
 
 
-<meta name="description" content="Hey,welcome to my blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Personal Bolg">
-<meta property="og:url" content="https://gongbojie.com/Personal-Bolg.html">
+<meta name="description" content="mac MySQL修改密码 关闭mysql服务 进入终端输入：cd /usr/local/mysql/bin/ 回车后 登录管理员权限 sudo su 回车后输入以下命令来禁止mysql验证功能 ./mysqld_safe –skip-grant-tables &amp;amp; 回车后mysql会自动重启（偏好设置中mysql的状态会变成running） 输入命令 ./mysql 回车后，输入命令 FL">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修改MySQL默认密码">
+<meta property="og:url" content="https://gongbojie.com/2016/03/22/修改MySQL默认密码/index.html">
 <meta property="og:site_name" content="BojieGong">
-<meta property="og:description" content="Hey,welcome to my blog.">
-<meta property="og:updated_time" content="2017-04-19T07:08:56.000Z">
+<meta property="og:description" content="mac MySQL修改密码 关闭mysql服务 进入终端输入：cd /usr/local/mysql/bin/ 回车后 登录管理员权限 sudo su 回车后输入以下命令来禁止mysql验证功能 ./mysqld_safe –skip-grant-tables &amp;amp; 回车后mysql会自动重启（偏好设置中mysql的状态会变成running） 输入命令 ./mysql 回车后，输入命令 FL">
+<meta property="og:updated_time" content="2017-04-20T03:20:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Personal Bolg">
-<meta name="twitter:description" content="Hey,welcome to my blog.">
+<meta name="twitter:title" content="修改MySQL默认密码">
+<meta name="twitter:description" content="mac MySQL修改密码 关闭mysql服务 进入终端输入：cd /usr/local/mysql/bin/ 回车后 登录管理员权限 sudo su 回车后输入以下命令来禁止mysql验证功能 ./mysqld_safe –skip-grant-tables &amp;amp; 回车后mysql会自动重启（偏好设置中mysql的状态会变成running） 输入命令 ./mysql 回车后，输入命令 FL">
 
 
 
@@ -127,19 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://gongbojie.com/Personal-Bolg.html"/>
+  <link rel="canonical" href="https://gongbojie.com/2016/03/22/修改MySQL默认密码/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    Personal Bolg | BojieGong
-  
-</title>
+  <title> 修改MySQL默认密码 | BojieGong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,19 +244,167 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">Personal Bolg</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gongbojie.com/2016/03/22/修改MySQL默认密码/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bojie Gong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BojieGong">
+    </span>
 
     
-    
-      <p>Hey,welcome to my blog.</p>
+      <header class="post-header">
 
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                修改MySQL默认密码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-22T11:04:34+08:00">
+                2016-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="mac-MySQL修改密码"><a href="#mac-MySQL修改密码" class="headerlink" title="mac MySQL修改密码"></a>mac MySQL修改密码</h4><ol>
+<li>关闭mysql服务</li>
+<li>进入终端输入：cd /usr/local/mysql/bin/</li>
+<li>回车后 登录管理员权限 sudo su</li>
+<li>回车后输入以下命令来禁止mysql验证功能 ./mysqld_safe –skip-grant-tables &amp;</li>
+<li>回车后mysql会自动重启（偏好设置中mysql的状态会变成running）</li>
+<li>输入命令 ./mysql</li>
+<li>回车后，输入命令 FLUSH PRIVILEGES; </li>
+<li>回车后，输入命令 SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘你的新密码’);</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/19/wxPython安装/" rel="next" title="wxPython安装">
+                <i class="fa fa-chevron-left"></i> wxPython安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/06/Xcode利用git提交已创建项目/" rel="prev" title="Xcode利用git提交已创建项目">
+                Xcode利用git提交已创建项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -293,8 +436,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -347,6 +499,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#mac-MySQL修改密码"><span class="nav-number">1.</span> <span class="nav-text">mac MySQL修改密码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -460,6 +628,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
