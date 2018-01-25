@@ -90,12 +90,36 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="BojieGong">
-<meta property="og:url" content="https://gongbojie.com/index.html">
+<meta name="description" content="[TOC] 利用vultr-vps上搭建-shadowsocks由于工作学习生活上使用YouTube，Google较多，在前两天使用的某上网利器到期后，发现套餐贵且流量少遂而萌生自建梯子的打算。话不多说，直接进入步骤。 介绍VPS与VultrVPS(Virtual private server) 译作虚拟专用伺服器。你可以把它简单地理解为一台在远端的强劲电脑。当你租用了它以后，可以给它安装操作系统">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用vps搭建梯子">
+<meta property="og:url" content="https://gongbojie.com/2018/01/25/使用vps搭建梯子/index.html">
 <meta property="og:site_name" content="BojieGong">
+<meta property="og:description" content="[TOC] 利用vultr-vps上搭建-shadowsocks由于工作学习生活上使用YouTube，Google较多，在前两天使用的某上网利器到期后，发现套餐贵且流量少遂而萌生自建梯子的打算。话不多说，直接进入步骤。 介绍VPS与VultrVPS(Virtual private server) 译作虚拟专用伺服器。你可以把它简单地理解为一台在远端的强劲电脑。当你租用了它以后，可以给它安装操作系统">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnso0zksdqj20x108nmyn.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnswtq6ecnj20ox0i3q5i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnso91ccy0j20tz0bxtap.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsoa5qty7j20tn0g4dhr.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsoc75iwyj20tx0fnjui.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsodr1owuj20tx0iemz2.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsotxeo32j20tz02qwes.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsov1wuorj20u203qq36.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsp3w4867j20ks0cuglw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsp7iu792j20ua0b475u.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnspd7e4ujj20kb021t8x.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnspi023foj20k8010mxb.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnspjv4l8zj20kb0190sw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnspmwbvw1j20g00ld40y.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsppvo7wij20kc06174z.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsptpz7xnj20fu09jjro.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnspwtms4tj20gf0ekq3o.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnsw8qxr97j20kh03edgf.jpg">
+<meta property="og:updated_time" content="2018-01-25T08:00:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BojieGong">
+<meta name="twitter:title" content="使用vps搭建梯子">
+<meta name="twitter:description" content="[TOC] 利用vultr-vps上搭建-shadowsocks由于工作学习生活上使用YouTube，Google较多，在前两天使用的某上网利器到期后，发现套餐贵且流量少遂而萌生自建梯子的打算。话不多说，直接进入步骤。 介绍VPS与VultrVPS(Virtual private server) 译作虚拟专用伺服器。你可以把它简单地理解为一台在远端的强劲电脑。当你租用了它以后，可以给它安装操作系统">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/880fe8a4ly1fnso0zksdqj20x108nmyn.jpg">
 
 
 
@@ -123,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="https://gongbojie.com/"/>
+  <link rel="canonical" href="https://gongbojie.com/2018/01/25/使用vps搭建梯子/"/>
 
 
 
 
 
-  <title> BojieGong </title>
+  <title> 使用vps搭建梯子 | BojieGong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,9 +178,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,9 +261,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -271,10 +293,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2018/01/25/使用vps搭建梯子/" itemprop="url">
-                  使用vps搭建梯子
-                </a>
+                使用vps搭建梯子
               
             
           </h1>
@@ -336,9 +355,7 @@
       
 
       
-        
-          
-            <p>[TOC]</p>
+        <p>[TOC]</p>
 <h1 id="利用vultr-vps上搭建-shadowsocks"><a href="#利用vultr-vps上搭建-shadowsocks" class="headerlink" title="利用vultr-vps上搭建-shadowsocks"></a>利用vultr-vps上搭建-shadowsocks</h1><p>由于工作学习生活上使用YouTube，Google较多，在前两天使用的某上网利器到期后，发现套餐贵且流量少遂而萌生自建梯子的打算。话不多说，直接进入步骤。</p>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="VPS与Vultr"><a href="#VPS与Vultr" class="headerlink" title="VPS与Vultr"></a>VPS与Vultr</h3><p>VPS(Virtual private server) 译作虚拟专用伺服器。你可以把它简单地理解为一台在远端的强劲电脑。当你租用了它以后，可以给它安装操作系统、软件，并通过一些工具连接和远程操控它。</p>
 <p><a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>是一家 VPS 服务器提供商，有美国、亚洲、欧洲等多地的 VPS。它家的服务器以性价比高闻名，按时间计费，最低的资费为每月 $5。相当于国内的阿里云和腾讯云。</p>
@@ -423,20 +440,27 @@
 <hr>
 <p>参考文章：<br><a href="https://www.91yun.co/archives/795" target="_blank" rel="external">教程：CentOS更换内核，提供锐速可用的内核下载</a><br><a href="https://zoomyale.com/2016/vultr_and_ss/" target="_blank" rel="external">科学上网的终极姿势:在 Vultr VPS 上搭建 Shadowsocks</a><br><a href="https://www.banwago.com/1265.html" target="_blank" rel="external">怎样检查IP被墙</a><br><a href="https://www.centos.bz/2017/08/ssh-host-key-verification-failed/" target="_blank" rel="external">解决SSH出现HOST KEY VERIFICATION FAILED错误的方法</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
@@ -444,574 +468,38 @@
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://gongbojie.com/2017/04/25/Hexo-Next-主题集成Disqus评论/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bojie Gong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BojieGong">
-    </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/25/Hexo-Next-主题集成Disqus评论/" itemprop="url">
-                  Hexo Next 主题集成Disqus评论
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T18:23:25+08:00">
-                2017-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/25/Hexo-Next-主题集成Disqus评论/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/25/Hexo-Next-主题集成Disqus评论/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>hexo默认集成了disqus<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/25/Hexo-Next-主题集成Disqus评论/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://gongbojie.com/2017/04/19/wxPython安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bojie Gong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BojieGong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/04/25/Hexo-Next-主题集成Disqus评论/" rel="prev" title="Hexo Next 主题集成Disqus评论">
+                Hexo Next 主题集成Disqus评论 <i class="fa fa-chevron-right"></i>
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/04/19/wxPython安装/" itemprop="url">
-                  wxPython安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T18:54:30+08:00">
-                2017-04-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/19/wxPython安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/19/wxPython安装/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="wxPython安装步骤"><a href="#wxPython安装步骤" class="headerlink" title="wxPython安装步骤"></a>wxPython安装步骤</h1><ol>
-<li><p>安装homebrew</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/19/wxPython安装/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://gongbojie.com/2016/03/22/修改MySQL默认密码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bojie Gong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BojieGong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/22/修改MySQL默认密码/" itemprop="url">
-                  修改MySQL默认密码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-22T11:04:34+08:00">
-                2016-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/03/22/修改MySQL默认密码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/03/22/修改MySQL默认密码/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h4 id="mac-MySQL修改密码"><a href="#mac-MySQL修改密码" class="headerlink" title="mac MySQL修改密码"></a>mac MySQL修改密码</h4><ol>
-<li>关闭mysql服务</li>
-<li>进入终端输入：cd /usr/local/mysql/bin/</li>
-<li>回车后 登录管理员权限 sudo su</li>
-<li>回车后输入以下命令来禁止mysql验证功能 ./mysqld_safe –skip-grant-tables &amp;</li>
-<li>回车后mysql会自动重启（偏好设置中mysql的状态会变成running）</li>
-<li>输入命令 ./mysql</li>
-<li>回车后，输入命令 FLUSH PRIVILEGES; </li>
-<li>回车后，输入命令 SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘你的新密码’);</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://gongbojie.com/2015/09/06/Xcode利用git提交已创建项目/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bojie Gong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BojieGong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/06/Xcode利用git提交已创建项目/" itemprop="url">
-                  Xcode利用git提交已创建项目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-06T15:39:36+08:00">
-                2015-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/09/06/Xcode利用git提交已创建项目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/09/06/Xcode利用git提交已创建项目/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一般情况下,提交已有项目总是会出现项目名称后面的符号 <strong><em><em>?</em></em></strong> ,正确的提交步骤如下:<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/09/06/Xcode利用git提交已创建项目/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -1019,6 +507,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1038,8 +537,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -1092,6 +600,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用vultr-vps上搭建-shadowsocks"><span class="nav-number">1.</span> <span class="nav-text">利用vultr-vps上搭建-shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS与Vultr"><span class="nav-number">1.1.1.</span> <span class="nav-text">VPS与Vultr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH"><span class="nav-number">1.1.2.</span> <span class="nav-text">SSH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#购买和连接-VPS"><span class="nav-number">1.2.</span> <span class="nav-text">购买和连接 VPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册-Vultr"><span class="nav-number">1.2.1.</span> <span class="nav-text">注册 Vultr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署-VPS"><span class="nav-number">1.2.2.</span> <span class="nav-text">部署 VPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接-VPS"><span class="nav-number">1.2.3.</span> <span class="nav-text">连接 VPS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署-Shadowsocks"><span class="nav-number">1.3.</span> <span class="nav-text">部署 Shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#部署-Shadowsocks-服务器端"><span class="nav-number">1.3.1.</span> <span class="nav-text">部署 Shadowsocks 服务器端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-Fast-Open"><span class="nav-number">1.3.2.</span> <span class="nav-text">TCP Fast Open</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置Shadowsocks-客户端"><span class="nav-number">1.3.3.</span> <span class="nav-text">设置Shadowsocks 客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启锐速"><span class="nav-number">1.4.</span> <span class="nav-text">开启锐速</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1205,6 +729,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -1222,6 +750,18 @@
       <script id="dsq-count-scr" src="https://gongbojie.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://gongbojie.com/2018/01/25/使用vps搭建梯子/';
+          this.page.identifier = '2018/01/25/使用vps搭建梯子/';
+          this.page.title = '使用vps搭建梯子';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://gongbojie.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
