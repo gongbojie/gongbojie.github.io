@@ -250,6 +250,171 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://gongbojie.com/2018/07/19/AFN的urlencode请求/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bojie Gong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/07/19/AFN的urlencode请求/" itemprop="url">
+                  AFN的url encode请求
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T14:42:27+08:00">
+                2018-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/19/AFN的urlencode请求/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/07/19/AFN的urlencode请求/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/19/AFN的urlencode请求/" class="leancloud_visitors" data-flag-title="AFN的url encode请求">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Postman中使用url-encode"><a href="#Postman中使用url-encode" class="headerlink" title=" Postman中使用url encode"></a><i class="fab fa-internet-explorer"></i> Postman中使用url encode</h2><p><img src="http://ww1.sinaimg.cn/large/880fe8a4gy1ftfaqhy4ndj20uk092q49.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/880fe8a4gy1ftfano5tswj20uk0aj3zt.jpg" alt=""></p>
+<h2 id="AFN常规请求"><a href="#AFN常规请求" class="headerlink" title="AFN常规请求"></a>AFN常规请求</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];</div><div class="line">    manager.requestSerializer=[AFJSONRequestSerializer serializer];<span class="comment">//申明请求的数据是json类型</span></div><div class="line">    manager.responseSerializer = [AFJSONResponseSerializer serializer];<span class="comment">//申明返回的结果是json类型</span></div><div class="line">    [manager POST:hostUrl parameters:dic success:^(<span class="built_in">NSURLSessionDataTask</span> *task, <span class="keyword">id</span> responseObject) &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"success--%@--%@"</span>,[responseObject <span class="keyword">class</span>],responseObject);</div><div class="line">    &#125; failure:^(<span class="built_in">NSURLSessionDataTask</span> *task, <span class="built_in">NSError</span> *error) &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"failure--%@"</span>,error);</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<p>发现返回结果报错</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">failure--Error Domain=com.alamofire.error.serialization.response Code=-1011 "Request failed: unsupported media type (415)" </div><div class="line">UserInfo=&#123;NSLocalizedDescription=Request failed: unsupported media type (415), NSUnderlyingError=0x1c0646930 </div><div class="line">	&#123;Error Domain=com.alamofire.error.serialization.response Code=-1016 "Request failed: unacceptable content-type: text/html" </div><div class="line">	UserInfo=&#123;NSLocalizedDescription=Request failed: unacceptable content-type: text/html, NSErrorFailingURLKey=http:</div><div class="line"></div><div class="line">	Headers &#123;</div><div class="line">    Content-Type = (</div><div class="line">    text/html;charset=utf-8,</div><div class="line">);</div><div class="line">    Content-Length = (</div><div class="line">    1092,</div><div class="line">);</div><div class="line">    Server = (</div><div class="line">    Apache-Coyote/1.1,</div><div class="line">);</div><div class="line">    Date = (</div><div class="line">    Thu, 19 Jul 2018 09:43:07 GMT,</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>注意到code=-1011，错误码为415，text/html;charset=utf-8</p>
+<p>接着加上请求的编码格式</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">后经验证 这一行设置代码可以删除 使用 manager.requestSerializer = [AFHTTPRequestSerializer serializer]; 即可</div><div class="line"></div><div class="line">[manager.requestSerializer setValue:<span class="string">@"application/x-www-form-urlencoded;"</span> forHTTPHeaderField:<span class="string">@"Content-Type"</span>];</div></pre></td></tr></table></figure>
+<p>发现时json编码格式，不对<br>接着查看AFN的请求Header，加上以下代码</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSHTTPURLResponse</span> *response = (<span class="built_in">NSHTTPURLResponse</span> *)task.response;</div><div class="line"><span class="built_in">NSDictionary</span> *allHeaders = response.allHeaderFields;</div></pre></td></tr></table></figure>
+<p>allHeaders中的数据<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    Content-Type = application/json;</div><div class="line">    Content-Length = 63;</div><div class="line">    Server = Apache-Coyote/1.1;</div><div class="line">    Date = Thu, 19 Jul 2018 09:49:12 GMT;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以进行到请求成功里面，但是返回的POST的提交的数据却无法提交，返回结果为提交的数据为空，表示提交的数据编码不对，修改请求的编码序列化<br><del>manager.requestSerializer = [AFJSONRequestSerializer serializer];</del></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">manager.requestSerializer = [AFHTTPRequestSerializer serializer];</div></pre></td></tr></table></figure>
+<p>然后可以正常进行数据请求了。</p>
+<hr>
+<p>参考文章：</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/81e648ac3589" target="_blank" rel="external">AFNetworking报错:(415 Domain=com.alamofire.error.serialization.response Code=-1011 “Request failed: unsupported media type (415)”)</a></li>
+<li><a href="https://www.jianshu.com/p/2580c05d5a1d" target="_blank" rel="external">AFN Post请求中出现的问题</a></li>
+<li><a href="https://juejin.im/post/5a71289c5188252edb592f5f" target="_blank" rel="external">AFNetworking之AFURLRequestSerialization深入学习</a></li>
+<li><a href="https://juejin.im/entry/58f850eb0ce4630061105c8d" target="_blank" rel="external">AFNetWorking 源码分析之 AFHTTPSessionManager</a></li>
+<li><a href="https://www.jianshu.com/p/a9f09052eaed" target="_blank" rel="external">使用 AFNetworking3.0请求时如何获取响应头文件</a></li>
+<li><a href="https://www.jianshu.com/p/22075e7db6f7" target="_blank" rel="external">AFNetworking源码解析</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://gongbojie.com/2018/06/29/fastlane使用小记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1497,7 +1662,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
