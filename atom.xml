@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gongbojie.com/"/>
-  <updated>2018-08-27T09:50:15.054Z</updated>
+  <updated>2018-08-27T10:27:43.612Z</updated>
   <id>https://gongbojie.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://gongbojie.com/2018/08/27/Xcode%E6%89%93%E5%8C%85%E6%8F%90%E4%BA%A4%E7%AC%AC%E4%B8%89%E6%96%B9%E5%8C%85%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98/"/>
     <id>https://gongbojie.com/2018/08/27/Xcode打包提交第三方包出错问题/</id>
     <published>2018-08-27T09:43:11.000Z</published>
-    <updated>2018-08-27T09:50:15.054Z</updated>
+    <updated>2018-08-27T10:27:43.612Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/880fe8a4gy1fuoc0p6djaj20f705iq4a.jpg" alt=""></p><ol><li>第三方框架的plist文件，查看plist文件中，找出key是CFBundleExecutable(或者是Executable file)的配置行。一般都是在某些第三方的plist文件中。</li></ol><p><img src="http://ww1.sinaimg.cn/large/880fe8a4gy1fuoc29g7i4j20yi0q8q9a.jpg" alt=""></p><ol start="2"><li>将找出所有第三方plist文件中的CFBundleExecutable行，CFBundleSupportedPlatforms行删除</li><li>重新打包，提交</li></ol><p><a href="https://stackoverflow.com/questions/32622899/itms-90535-unable-to-publish-ios-app-with-latest-google-signin-sdk" target="_blank" rel="noopener">参考链接</a></p>]]></content>
     
