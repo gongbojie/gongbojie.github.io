@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gongbojie.com/"/>
-  <updated>2019-01-25T09:56:35.040Z</updated>
+  <updated>2019-03-07T03:37:12.948Z</updated>
   <id>https://gongbojie.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工具使用小Tips记录</title>
+    <link href="https://gongbojie.com/2019/03/07/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%B0%8FTips%E8%AE%B0%E5%BD%95/"/>
+    <id>https://gongbojie.com/2019/03/07/工具使用小Tips记录/</id>
+    <published>2019-03-07T03:37:00.000Z</published>
+    <updated>2019-03-07T03:37:12.948Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Markdowm"><a href="#Markdowm" class="headerlink" title="Markdowm"></a>Markdowm</h1><ol><li>markdown导出pdf时候强制换页，插入以下代码</li></ol><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div STYLE="page-break-after: always;"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Markdowm&quot;&gt;&lt;a href=&quot;#Markdowm&quot; class=&quot;headerlink&quot; title=&quot;Markdowm&quot;&gt;&lt;/a&gt;Markdowm&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;markdown导出pdf时候强制换页，插入以下代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;f
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Xcode打包上传AppStore问题</title>
@@ -178,7 +202,7 @@
     <link href="https://gongbojie.com/2018/06/19/Xocde%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B/"/>
     <id>https://gongbojie.com/2018/06/19/Xocde无法打开工程/</id>
     <published>2018-06-19T07:25:52.000Z</published>
-    <updated>2019-03-07T03:28:05.342Z</updated>
+    <updated>2019-03-07T03:31:22.111Z</updated>
     
     <content type="html"><![CDATA[<p>在打开项目的.xcworkspace时候，发现出现错误无法运行<br><img src="http://ww1.sinaimg.cn/large/880fe8a4gy1fsgj20beq9j21400oejuy.jpg" alt=""><br><a id="more"></a><br><img src="http://ww1.sinaimg.cn/large/880fe8a4gy1fsgj27kutij21400oeq6o.jpg" alt=""></p><p>再次打开工程文件.xcodeproj，也是无法打开<br><img src="http://ww1.sinaimg.cn/mw690/880fe8a4gy1fsgizr9ssoj20bs04t0t9.jpg" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to load project at &apos;xxx&apos;, incompatible project version.</span><br></pre></td></tr></table></figure><p>然后排除cocoapods的原因，发现创建项目时使用的是Xcode 9.3而自己的Xcode版本是9.2，所以无法打开。</p><p>解决办法：</p><ol><li>将Xcode升级到9.3</li><li>修改项目中的配置使项目可以用低版本xcode打开<img src="http://ww1.sinaimg.cn/large/880fe8a4gy1fsgjbeppnqj229i0ke457.jpg" alt=""></li></ol><p><head><br>    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script><br>    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script><br></head> </p><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">]]></content>
     
