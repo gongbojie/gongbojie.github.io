@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gongbojie.com/"/>
-  <updated>2020-03-09T16:16:14.631Z</updated>
+  <updated>2020-09-09T09:16:59.559Z</updated>
   <id>https://gongbojie.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Xcode Configuration给一套代码展示不同图标和名称</title>
+    <link href="https://gongbojie.com/2020/09/09/%E4%BD%BF%E7%94%A8Xcode-Configuration%E7%BB%99%E4%B8%80%E5%A5%97%E4%BB%A3%E7%A0%81%E5%B1%95%E7%A4%BA%E4%B8%8D%E5%90%8C%E5%9B%BE%E6%A0%87%E5%92%8C%E5%90%8D%E7%A7%B0/"/>
+    <id>https://gongbojie.com/2020/09/09/使用Xcode-Configuration给一套代码展示不同图标和名称/</id>
+    <published>2020-09-09T07:48:41.000Z</published>
+    <updated>2020-09-09T09:16:59.559Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>我们在开发一个项目中，会存在多个环境：开发环境，测试环境，正式环境。需要打出不同的安装包提供测试，这就需要不同的bundle id，并且最好是在手机上加以区分，app图标不同，app展示名称不同。</p><p>综上我们需要达成以下目标：</p><ol><li>构建不同的宏来方便切换相应的配置</li><li>配置三种数据环境（开发、测试、正式）根据宏的切换进行切换</li><li>三种图标/应用名称根据宏的切换进行切换显示</li><li>至少两个类型的包能同时安装在手机上</li></ol><p><img src="IMG_01.png" width="50%" height="50%"></p><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>默认Xcode为每个target提供2个Build配置项(Build Configuration):Debug和Release。</p><h2 id="一、创建多个Configure"><a href="#一、创建多个Configure" class="headerlink" title="一、创建多个Configure"></a>一、创建多个Configure</h2><p>下图是两种创建Configure的方式</p><center><br>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="IMG_02.png"><br>    <br><br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">创建Configure的方式1</div><br></center><center><br>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="IMG_02.png"><br>    <br><br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">创建Configure的方式2</div><br></center><h2 id="二、数据环境的配置"><a href="#二、数据环境的配置" class="headerlink" title="二、数据环境的配置"></a>二、数据环境的配置</h2><p>新增了<code>TestVer</code>配置项之后，可以在当前<code>Target</code>的<code>Build Setting</code>下搜索<code>macros</code>找到<code>Preprocessor Macros</code>，可以看到我们刚刚Duplicate ‘Release’生成的<code>TestVer</code>的<code>Multiple Value</code>与<code>Release</code>的一模一样，这里我们需要新增<code>TESTVER=1</code>，来定义标示预发环境的宏变量TESTVER，主要是为了方便我们根据这里生成的宏在<code>.pch</code>文件中利用<code>#ifdef</code>来配置好相应的数据环境，这里同样可以将一些需要区分环境的第三方配置放进来，示意图及环境配置代码如下：<img src="IMG_04.png" alt=""></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> TESTVER <span class="comment">// 测试环境</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> SERVER_URL_HEAD @<span class="meta-string">"http://xxx.xxx.xxx.xx:8181/SocialSecurity/"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span> <span class="comment">// 正式环境</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">define</span> SERVER_URL_HEAD @<span class="meta-string">"http://xxx.xxx.xx.cn/SocialSecurity/"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure><p>接着就可以在运行和打包模式下切换环境了</p><p><img src="IMG_05.png" alt=""></p><center><br>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="IMG_06.png"><br>    <br><br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">运行</div><br></center><center><br>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="IMG_07.png"><br>    <br><br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">打包</div><br></center><p>需要注意的问题:</p><p>正常情况下，以上步骤完成之后，如上图选择Edit Scheme切换Build Configuration就能编译出相应环境下的App，但是如果你的App使用pods来管理第三方库，使用新建的配置项就会报错找不到第三方的库文件。<br><img src="IMG_05.png" alt=""><br>原因是pods工程并未自动帮我们创建相应的pod配置项，发现这一点之后我手动创建了一个同样名为TestVer的pod配置项，于是编译通过了，但是打ipa包的时候始终通不过，继续查找原因，原来xcconfig文件需要终端执行pod install进行全面配置，所以大家在新建完了之后记得要pod install一下，才能放心使用。</p><h2 id="三、配置不同的AppIcon"><a href="#三、配置不同的AppIcon" class="headerlink" title="三、配置不同的AppIcon"></a>三、配置不同的AppIcon</h2><p>创建新的iOS App Icon并取名AppIconTestVer<br><img src="IMG_09.png" alt=""><br>然后再当前Target的Build Setting下搜索icon找到Asset Catalog App Icon Set Name，然后进行如下配置：<br><img src="IMG_10.png" alt=""><br>在Edit Scheme选择相应的Configuration进行编译或者打包就能打出不同的图标了。</p><h2 id="四、配置不同的AppName"><a href="#四、配置不同的AppName" class="headerlink" title="四、配置不同的AppName"></a>四、配置不同的AppName</h2><p>配置不同的应用名称，这里需要使用到User-Defined加上info.plist来进行配置；<br>首先，我们需要新增一个User-Defined，如下图：<br><img src="IMG_11.png" alt=""><br>将三种Configuration下的应用名分别设置。<br>然后在info.plist中加入Bundle display name，将其设置成我们刚刚新建的User-Defined:<br><img src="IMG_12.png" alt=""></p><p>可能出现的问题：<br>如果你的不小心引入了别的工程的InfoPlist.strings文件，它里面配置的bundle display name设置会覆盖掉你的User-Defined，使你的设置没有作用。</p><h2 id="五、配置不同的Bundle-ID"><a href="#五、配置不同的Bundle-ID" class="headerlink" title="五、配置不同的Bundle ID"></a>五、配置不同的Bundle ID</h2><p>为了使打出来的三种包能够共同存在同一台手机上，我们需要像配置应用名称一样，新建一个User-Defined来根据不同的Configuration使用不同的Bundle ID打包。<br>配置方法与配置应用名称一致。<br><img src="IMG_13.png" alt=""><br><img src="IMG_14.png" alt=""><br>配置完成之后，同一个App就能够在一台手机上面安装多个不同的包。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;引子&quot;&gt;&lt;a href=&quot;#引子&quot; class=&quot;headerlink&quot; title=&quot;引子&quot;&gt;&lt;/a&gt;引子&lt;/h1&gt;&lt;p&gt;我们在开发一个项目中，会存在多个环境：开发环境，测试环境，正式环境。需要打出不同的安装包提供测试，这就需要不同的bundle id，并且最好
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>使用KVO为webView增加加载进度以及监听当前加载的地址</title>
@@ -435,30 +456,6 @@
     
     
       <category term="Hexo评论" scheme="https://gongbojie.com/tags/Hexo%E8%AF%84%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>wxPython安装</title>
-    <link href="https://gongbojie.com/2017/04/19/wxPython%E5%AE%89%E8%A3%85/"/>
-    <id>https://gongbojie.com/2017/04/19/wxPython安装/</id>
-    <published>2017-04-19T10:54:30.000Z</published>
-    <updated>2018-07-19T06:32:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="wxPython安装步骤"><a href="#wxPython安装步骤" class="headerlink" title=" wxPython安装步骤"></a><i class="fab fa-python fa-spin"></i> wxPython安装步骤</h1><ol><li><p>安装homebrew</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></li></ol><a id="more"></a><ol start="2"><li><p>利用homebrew安装wxpython</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install wxpython</span><br></pre></td></tr></table></figure></li></ol><p>输入命令：brew info wxpython 查看安装信息。这时wxpython就安装上了。</p><ol start="3"><li><p>接下来就是要将wx库和python连接到一起。<br>首先（Python console输入）</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import site; site.getsitepackages()</span><br></pre></td></tr></table></figure><p> 得到</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages&apos;, &apos;/System/Library/Frameworks/Python.framework/Versions/2.7/lib/site-python&apos;, &apos;/Library/Python/2.7/site-packages&apos;]</span><br></pre></td></tr></table></figure></li></ol><p>其中：/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python为系统的python安装路径，/Library/Python/2.7/site-packages就是python的 site-packages 目录。</p><pre><code>然后找到wxpython的wx模块，它在下面的目录中wx文件夹：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/wxpython/3.0.2.0/lib/python2.7/site-packages/wx-3.0-osx_cocoa</span><br></pre></td></tr></table></figure>接下来就是，给wx文件夹制作一个软链接，并将这个软链接放到python的 site-packages 目录下。具体步骤：1.进入python的 site-packages 目录：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /Library/Python/2.7/site-packages/</span><br></pre></td></tr></table></figure>2.输入命令：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/Cellar/wxpython/3.0.2.0/lib/python2.7/site-packages/wx-3.0-osx_cocoa/wx wx</span><br></pre></td></tr></table></figure>其中ln -s是制作软链接的命令，后面为wx模块路径，最后的wx为软链接的名字。</code></pre><p>暴力方法(目前还未使用到)：<br>如果上面的方法不行的话，直接到wx模块所在的路径下，为wx文件夹制作替身，然后将替身拷贝到python的site-packages目录下就OK了。</p><p><head><br>    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script><br>    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script><br></head> </p><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;wxPython安装步骤&quot;&gt;&lt;a href=&quot;#wxPython安装步骤&quot; class=&quot;headerlink&quot; title=&quot; wxPython安装步骤&quot;&gt;&lt;/a&gt;&lt;i class=&quot;fab fa-python fa-spin&quot;&gt;&lt;/i&gt; wxPython安装步骤&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;安装homebrew&lt;/p&gt;
- &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://gongbojie.com/tags/python/"/>
     
   </entry>
   
