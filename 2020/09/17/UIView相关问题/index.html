@@ -12,4 +12,32 @@
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">make.edges.equalTo(scrollView);</span><br><span class="line">make.width.equalTo(scrollView);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例如：</span></span><br><span class="line"> [<span class="keyword">self</span>.scrollView addSubview:<span class="keyword">self</span>.containerView];</span><br><span class="line">    [<span class="keyword">self</span>.containerView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">        make.edges.equalTo(<span class="keyword">self</span>.scrollView);</span><br><span class="line">        make.height.equalTo(<span class="keyword">self</span>.scrollView);</span><br><span class="line">        make.width.equalTo(@(SCREEN_WIDTH * <span class="number">2</span>));</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
 <p>如果我们需要竖向的滑动 就把width设为和scrollview相同<br>如果需要横向的滑动 就把height设为和scrollview相同</p>
 <p><a href="http://adad184.com/2015/12/01/scrollview-under-autolayout/" target="_blank" rel="noopener">参考文章</a></p>
+<h2 id="3-UIView自定义之纯代码"><a href="#3-UIView自定义之纯代码" class="headerlink" title="3. UIView自定义之纯代码"></a>3. UIView自定义之纯代码</h2><p>一般步骤：</p>
+<ol>
+<li>重写<code>- (instancetype)initWithFrame:(CGRect)frame</code>方法中添加子控件,但是不设置子控件frame；</li>
+<li>重写<code>- (void)layoutSubviews</code>中设置子控件frame注意必须调用<code>[super layoutSubviews]</code>;</li>
+<li>提供模型属性，并重写该模型属性的set方法；</li>
+<li>在该set方法中取出相应属性并给子控件赋值；</li>
+</ol>
+<p>使用纯代码创建自定义View,在之后使用的过程中，可能会使用<code>init</code>创建，也可能使用<code>initWithFrame</code>创建。无论使用哪种方式，在代码执行过程中最终一定会调用<code>initWithFrame</code>,所以重写<code>initWithFrame</code>方法可以保证无论使用哪种方式创建都可以保证子控件创建成功;</p>
+<blockquote>
+<p>为什么只是在<code>- (instancetype)initWithFrame:(CGRect)frame</code>方法中添加子控件而不设置frame,反而在<code>- (void)layoutSubviews</code>设置frame呢？<br>当我们在某个类的内部调整子视图位置时，需要调用。</p>
+</blockquote>
+<ol>
+<li>init初始化不会触发<code>layoutSubviews</code><br>但是用<code>initWithFrame</code>进行初始化时，当rect的值不为<code>CGRectZero</code>时,也会触发；</li>
+<li><code>addSubview</code>会触发<code>layoutSubviews</code>；</li>
+<li>设置view的Frame会触发<code>layoutSubviews</code>，当然前提是frame的值设置前后发生了变化；</li>
+<li>滚动一个UIScrollView会触发<code>layoutSubviews</code>；</li>
+<li>旋转Screen会触发父UIView上的<code>layoutSubviews</code>事件；</li>
+<li>改变一个UIView大小的时候也会触发父UIView上的<code>layoutSubviews</code>事件；</li>
+</ol>
+<p>虽然两种方式最后都会调用到<code>initWithFrame:</code>方法。如果使用<code>init</code>方法创建，那么这个view的frame有可能是不确定的。</p>
+<p>总结:</p>
+<ol>
+<li>新建一个继承UIVIew的类；</li>
+<li>在实现文件中添加子控件（weak声明）；</li>
+<li>重写<code>- (instancetype)initWithFrame:(CGRect)frame</code>初始化子控件但不设置子控件frame;</li>
+<li>重写<code>- (void)layoutSubviews</code>，设置子控件frame，记得一定要写<code>[super layoutSubviews]</code>;</li>
+<li>提供一个模型属性，在该模型的set方法中为子控件赋值；</li>
+</ol>
 </div></article></div></main><footer><div class="paginator"><a href="/2020/09/09/使用Xcode-Configuration给一套代码展示不同图标和名称/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2020 <a href="https://gongbojie.com">Bojie Gong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
