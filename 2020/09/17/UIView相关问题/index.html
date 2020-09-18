@@ -21,6 +21,10 @@
 </ol>
 <p>使用纯代码创建自定义View,在之后使用的过程中，可能会使用<code>init</code>创建，也可能使用<code>initWithFrame</code>创建。无论使用哪种方式，在代码执行过程中最终一定会调用<code>initWithFrame</code>,所以重写<code>initWithFrame</code>方法可以保证无论使用哪种方式创建都可以保证子控件创建成功;</p>
 <blockquote>
+<p>为什么先打印的是<code>initWithFrame</code>而不是<code>init</code>?</p>
+<p>注意看<code>- (instancetype)initWithFrame:(CGRect)frame NS_DESIGNATED_INITIALIZER;</code>其中的关键字<code>NS_DESIGNATED_INITIALIZER</code>作用当面对多个初始化方法时，不知道哪一个才是正确的初始化方法，对此，苹果提供了两个关键字：<code>NS_UNAVAILABLE</code>与<code>NS_DESIGNATED_INITIALIZER</code>来帮助我们约束定义方式，使得接口描述更加清晰。对于多个<code>init</code>方法，苹果给出了一个调用顺序，而我们也应该遵守这种调用顺序，以确保无论外部调用者从哪个入口进入，都能够正确的初始化：对于这种能初始化全部必需变量的方法，一般可作为<code>designed initializer</code>。所以，可以明确的告诉外部调用者，无论调用哪种初始化方法，最终，都会调用<code>designed initializer:</code>对于<code>NS_DESIGNATED_INITIALIZER</code>感兴趣的话可以了解下，这里就不在多说啦；</p>
+</blockquote>
+<blockquote>
 <p>为什么只是在<code>- (instancetype)initWithFrame:(CGRect)frame</code>方法中添加子控件而不设置frame,反而在<code>- (void)layoutSubviews</code>设置frame呢？<br>当我们在某个类的内部调整子视图位置时，需要调用。</p>
 </blockquote>
 <ol>
@@ -40,4 +44,4 @@
 <li>重写<code>- (void)layoutSubviews</code>，设置子控件frame，记得一定要写<code>[super layoutSubviews]</code>;</li>
 <li>提供一个模型属性，在该模型的set方法中为子控件赋值；</li>
 </ol>
-</div></article></div></main><footer><div class="paginator"><a href="/2020/09/09/使用Xcode-Configuration给一套代码展示不同图标和名称/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2020 <a href="https://gongbojie.com">Bojie Gong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
+</div></article></div></main><footer><div class="paginator"><a href="/2020/09/09/使用Xcode-Configuration给一套代码展示不同图标和名称/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2020 <a href="https://gongbojie.com">Bojie Gong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
